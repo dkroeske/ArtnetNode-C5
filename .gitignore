@@ -1,0 +1,42 @@
+# ==========================================
+# Build & Compiler Output (CMake & CubeIDE)
+# ==========================================
+**/build/
+**/Debug/
+**/Release/
+**/cmake-build-*/
+**/*.o
+**/*.d
+**/*.obj
+**/*.elf
+**/*.bin
+**/*.hex
+**/*.map
+**/*.list
+**/*.lst
+**/*.su
+**/*.cyclo
+
+# ==========================================
+# STM32CubeIDE / Eclipse & CMake Cache
+# ==========================================
+.settings/
+.metadata/
+.cproject
+.project
+.mxproject
+*.launch
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/compile_commands.json
+
+# ==========================================
+# Editors & OS bestanden (Windows / Mac)
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*~
+Thumbs.db
+.DS_Store
