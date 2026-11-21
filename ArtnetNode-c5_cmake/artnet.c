@@ -21,7 +21,7 @@
 
 // Defines
 #define ARTNET_UNIVERSE	(uint16_t) 8
-#define NR_LEDS	(uint16_t) 10
+//#define NR_LEDS	(uint16_t) 10
 
 // Local prototypes
 static void ArtNetClientThread(void *args);
@@ -255,7 +255,7 @@ static void ArtNetClientThread(void *args)
 					break;
 
         		case ARTNET_OPCODE_DMX:
-		        	APP_LOG_INFO(APP_NAME, "ArtNet DMX received");
+		        	//APP_LOG_INFO(APP_NAME, "ArtNet DMX received");
 		        	artnet_handle_dmx(rx_buffer, len);
 		        	break;
         	}

@@ -100,91 +100,29 @@ hal_eth_handle_t *mx_eth1_init(void)
   /****************************************************************************/
   /* ### ETH1 GPIO Configuration ########################### */
   /* GPIO Clocks activation */
-  HAL_RCC_GPIOG_EnableClock();
-
   HAL_RCC_GPIOC_EnableClock();
 
-  HAL_RCC_GPIOD_EnableClock();
+  HAL_RCC_GPIOA_EnableClock();
 
   HAL_RCC_GPIOE_EnableClock();
 
-  HAL_RCC_GPIOA_EnableClock();
+  HAL_RCC_GPIOD_EnableClock();
+
+  HAL_RCC_GPIOG_EnableClock();
 
   hal_gpio_config_t  gpio_config;
 
   /**
     [GPIO Pin] ------> [Signal Name] ------> [Labels]
 
-       PG11    ------>   ETH1_RMII_TX_EN   ------>  PG11
-       PG12    ------>   ETH1_RMII_TXD1   ------>  PG12
-       PG13    ------>   ETH1_RMII_TXD0   ------>  PG13
-    **/
-  gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
-  gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
-  gpio_config.pull        = HAL_GPIO_PULL_NO;
-  gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
-  gpio_config.alternate   = HAL_GPIO_AF_10;
-  HAL_GPIO_Init(HAL_GPIOG, PG11_PIN | PG12_PIN | PG13_PIN, &gpio_config);
-
-  /**
-    [GPIO Pin] ------> [Signal Name] ------> [Labels]
-
-       PC4     ------>   ETH1_RMII_RXD0   ------>  PC4
-    **/
-  gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
-  gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
-  gpio_config.pull        = HAL_GPIO_PULL_NO;
-  gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
-  gpio_config.alternate   = HAL_GPIO_AF_12;
-  HAL_GPIO_Init(PC4_PORT, PC4_PIN, &gpio_config);
-
-  /**
-    [GPIO Pin] ------> [Signal Name] ------> [Labels]
-
-       PD1     ------>   ETH1_RMII_CRS_DV   ------>  PD1
-    **/
-  gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
-  gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
-  gpio_config.pull        = HAL_GPIO_PULL_NO;
-  gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
-  gpio_config.alternate   = HAL_GPIO_AF_10;
-  HAL_GPIO_Init(PD1_PORT, PD1_PIN, &gpio_config);
-
-  /**
-    [GPIO Pin] ------> [Signal Name] ------> [Labels]
-
-       PE12    ------>   ETH1_MDIO   ------>  PE12
-    **/
-  gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
-  gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
-  gpio_config.pull        = HAL_GPIO_PULL_UP;
-  gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
-  gpio_config.alternate   = HAL_GPIO_AF_10;
-  HAL_GPIO_Init(PE12_PORT, PE12_PIN, &gpio_config);
-
-  /**
-    [GPIO Pin] ------> [Signal Name] ------> [Labels]
-
-       PA10    ------>   ETH1_CLK   ------>  PA10
+       PC5     ------>   ETH1_RMII_RXD1   ------>  PC5
     **/
   gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
   gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
   gpio_config.pull        = HAL_GPIO_PULL_NO;
   gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
   gpio_config.alternate   = HAL_GPIO_AF_13;
-  HAL_GPIO_Init(PA10_PORT, PA10_PIN, &gpio_config);
-
-  /**
-    [GPIO Pin] ------> [Signal Name] ------> [Labels]
-
-       PC1     ------>   ETH1_MDC   ------>  PC1
-    **/
-  gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
-  gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
-  gpio_config.pull        = HAL_GPIO_PULL_NO;
-  gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
-  gpio_config.alternate   = HAL_GPIO_AF_10;
-  HAL_GPIO_Init(PC1_PORT, PC1_PIN, &gpio_config);
+  HAL_GPIO_Init(PC5_PORT, PC5_PIN, &gpio_config);
 
   /**
     [GPIO Pin] ------> [Signal Name] ------> [Labels]
@@ -201,14 +139,76 @@ hal_eth_handle_t *mx_eth1_init(void)
   /**
     [GPIO Pin] ------> [Signal Name] ------> [Labels]
 
-       PC5     ------>   ETH1_RMII_RXD1   ------>  PC5
+       PC1     ------>   ETH1_MDC   ------>  PC1
+    **/
+  gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
+  gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
+  gpio_config.pull        = HAL_GPIO_PULL_NO;
+  gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
+  gpio_config.alternate   = HAL_GPIO_AF_10;
+  HAL_GPIO_Init(PC1_PORT, PC1_PIN, &gpio_config);
+
+  /**
+    [GPIO Pin] ------> [Signal Name] ------> [Labels]
+
+       PA10    ------>   ETH1_CLK   ------>  PA10
     **/
   gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
   gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
   gpio_config.pull        = HAL_GPIO_PULL_NO;
   gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
   gpio_config.alternate   = HAL_GPIO_AF_13;
-  HAL_GPIO_Init(PC5_PORT, PC5_PIN, &gpio_config);
+  HAL_GPIO_Init(PA10_PORT, PA10_PIN, &gpio_config);
+
+  /**
+    [GPIO Pin] ------> [Signal Name] ------> [Labels]
+
+       PE12    ------>   ETH1_MDIO   ------>  PE12
+    **/
+  gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
+  gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
+  gpio_config.pull        = HAL_GPIO_PULL_UP;
+  gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
+  gpio_config.alternate   = HAL_GPIO_AF_10;
+  HAL_GPIO_Init(PE12_PORT, PE12_PIN, &gpio_config);
+
+  /**
+    [GPIO Pin] ------> [Signal Name] ------> [Labels]
+
+       PD1     ------>   ETH1_RMII_CRS_DV   ------>  PD1
+    **/
+  gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
+  gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
+  gpio_config.pull        = HAL_GPIO_PULL_NO;
+  gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
+  gpio_config.alternate   = HAL_GPIO_AF_10;
+  HAL_GPIO_Init(PD1_PORT, PD1_PIN, &gpio_config);
+
+  /**
+    [GPIO Pin] ------> [Signal Name] ------> [Labels]
+
+       PC4     ------>   ETH1_RMII_RXD0   ------>  PC4
+    **/
+  gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
+  gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
+  gpio_config.pull        = HAL_GPIO_PULL_NO;
+  gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
+  gpio_config.alternate   = HAL_GPIO_AF_12;
+  HAL_GPIO_Init(PC4_PORT, PC4_PIN, &gpio_config);
+
+  /**
+    [GPIO Pin] ------> [Signal Name] ------> [Labels]
+
+       PG13    ------>   ETH1_RMII_TXD0   ------>  PG13
+       PG12    ------>   ETH1_RMII_TXD1   ------>  PG12
+       PG11    ------>   ETH1_RMII_TX_EN   ------>  PG11
+    **/
+  gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
+  gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
+  gpio_config.pull        = HAL_GPIO_PULL_NO;
+  gpio_config.speed       = HAL_GPIO_SPEED_FREQ_HIGH;
+  gpio_config.alternate   = HAL_GPIO_AF_10;
+  HAL_GPIO_Init(HAL_GPIOG, PG13_PIN | PG12_PIN | PG11_PIN, &gpio_config);
 
   if (HAL_ETH_Init(&hETH1, HAL_ETH1) != HAL_OK)
   {
@@ -330,20 +330,20 @@ void mx_eth1_deinit(void)
   /* Deinitialize the ETH peripheral */
   (void)HAL_ETH_DeInit(&hETH1);
 
-  /* De-initialize all GPIOG pins associated with ETH1 */
-  HAL_GPIO_DeInit(HAL_GPIOG, PG11_PIN | PG12_PIN | PG13_PIN);
-
   /* De-initialize all GPIOC pins associated with ETH1 */
   HAL_GPIO_DeInit(HAL_GPIOC, PC1_PIN | PC4_PIN | PC5_PIN);
 
-  /* De-initialize all GPIOD pins associated with ETH1 */
-  HAL_GPIO_DeInit(PD1_PORT, PD1_PIN);
+  /* De-initialize all GPIOA pins associated with ETH1 */
+  HAL_GPIO_DeInit(HAL_GPIOA, PA1_PIN | PA10_PIN);
 
   /* De-initialize all GPIOE pins associated with ETH1 */
   HAL_GPIO_DeInit(PE12_PORT, PE12_PIN);
 
-  /* De-initialize all GPIOA pins associated with ETH1 */
-  HAL_GPIO_DeInit(HAL_GPIOA, PA1_PIN | PA10_PIN);
+  /* De-initialize all GPIOD pins associated with ETH1 */
+  HAL_GPIO_DeInit(PD1_PORT, PD1_PIN);
+
+  /* De-initialize all GPIOG pins associated with ETH1 */
+  HAL_GPIO_DeInit(HAL_GPIOG, PG11_PIN | PG12_PIN | PG13_PIN);
 }
 
 hal_eth_handle_t *mx_eth1_gethandle(void)

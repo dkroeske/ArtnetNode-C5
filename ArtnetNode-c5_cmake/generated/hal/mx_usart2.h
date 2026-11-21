@@ -29,13 +29,13 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 
-/** Primary aliases for USART2_RX pin */
-#define DBGIN_VCP_RX_PORT                     HAL_GPIOA
-#define DBGIN_VCP_RX_PIN                      HAL_GPIO_PIN_3
-
 /** Primary aliases for USART2_TX pin */
 #define DBGIN_VCP_TX_PORT                     HAL_GPIOA
 #define DBGIN_VCP_TX_PIN                      HAL_GPIO_PIN_2
+
+/** Primary aliases for USART2_RX pin */
+#define DBGIN_VCP_RX_PORT                     HAL_GPIOA
+#define DBGIN_VCP_RX_PIN                      HAL_GPIO_PIN_3
 
 /* Exported macros -----------------------------------------------------------*/
 /* Exported variables --------------------------------------------------------*/

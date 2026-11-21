@@ -73,15 +73,15 @@ hal_uart_handle_t *mx_usart2_uart_init(void)
   /**
     [GPIO Pin] ------> [Signal Name] ------> [Labels]
 
-       PA3     ------>   USART2_RX   ------>  DBGIN_VCP_RX
        PA2     ------>   USART2_TX   ------>  DBGIN_VCP_TX
+       PA3     ------>   USART2_RX   ------>  DBGIN_VCP_RX
     **/
   gpio_config.mode        = HAL_GPIO_MODE_ALTERNATE;
   gpio_config.output_type = HAL_GPIO_OUTPUT_PUSHPULL;
   gpio_config.pull        = HAL_GPIO_PULL_NO;
   gpio_config.speed       = HAL_GPIO_SPEED_FREQ_LOW;
   gpio_config.alternate   = HAL_GPIO_AF_7;
-  HAL_GPIO_Init(HAL_GPIOA, DBGIN_VCP_RX_PIN | DBGIN_VCP_TX_PIN, &gpio_config);
+  HAL_GPIO_Init(HAL_GPIOA, DBGIN_VCP_TX_PIN | DBGIN_VCP_RX_PIN, &gpio_config);
 
   return &hUSART2;
 }

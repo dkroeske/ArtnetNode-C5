@@ -34,10 +34,17 @@ extern "C" {
 #include "mx_rcc.h"
 #include "mx_rng.h"
 #include "mx_tim6.h"
+#include "mx_tim8.h"
 #include "mx_usart2.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
+
+  /* *************************************************************
+    TIM8 / LPDMA1_CH0: No software label has been defined for this peripheral instance
+      in the STM32CubeMX2 configuration panel.
+      As a result, no aliases are generated for Channel instance
+    ************************************************************* */
 
 /* Exported macros -----------------------------------------------------------*/
 
@@ -83,6 +90,12 @@ extern "C" {
     TIM6: No software label has been defined for this peripheral instance
       in the STM32CubeMX2 configuration panel.
       As a result, no aliases are generated for mx_tim6_init
+    ************************************************************* */
+
+  /* *************************************************************
+    TIM8: No software label has been defined for this peripheral instance
+      in the STM32CubeMX2 configuration panel.
+      As a result, no aliases are generated for mx_tim8_init
     ************************************************************* */
 
   /* *************************************************************
@@ -132,6 +145,12 @@ extern "C" {
     ************************************************************* */
 
   /* *************************************************************
+    TIM8: No software label has been defined for this peripheral instance
+      in the STM32CubeMX2 configuration panel.
+      As a result, no aliases are generated for mx_tim8_deinit
+    ************************************************************* */
+
+  /* *************************************************************
     USART2: No software label has been defined for this peripheral instance
       in the STM32CubeMX2 configuration panel.
       As a result, no aliases are generated for mx_usart2_uart_deinit
@@ -163,6 +182,12 @@ extern "C" {
     TIM6: No software label has been defined for this peripheral instance
       in the STM32CubeMX2 configuration panel.
       As a result, no aliases are generated for mx_tim6_gethandle
+    ************************************************************* */
+
+  /* *************************************************************
+    TIM8: No software label has been defined for this peripheral instance
+      in the STM32CubeMX2 configuration panel.
+      As a result, no aliases are generated for mx_tim8_gethandle
     ************************************************************* */
 
   /* *************************************************************

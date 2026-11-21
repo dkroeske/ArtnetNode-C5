@@ -30,45 +30,45 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 
-/** Primary aliases for ETH1_RMII_TX_EN pin */
-#define PG11_PORT                             HAL_GPIOG
-#define PG11_PIN                              HAL_GPIO_PIN_11
-
-/** Primary aliases for ETH1_RMII_TXD1 pin */
-#define PG12_PORT                             HAL_GPIOG
-#define PG12_PIN                              HAL_GPIO_PIN_12
-
-/** Primary aliases for ETH1_RMII_TXD0 pin */
-#define PG13_PORT                             HAL_GPIOG
-#define PG13_PIN                              HAL_GPIO_PIN_13
-
-/** Primary aliases for ETH1_RMII_RXD0 pin */
-#define PC4_PORT                              HAL_GPIOC
-#define PC4_PIN                               HAL_GPIO_PIN_4
-
-/** Primary aliases for ETH1_RMII_CRS_DV pin */
-#define PD1_PORT                              HAL_GPIOD
-#define PD1_PIN                               HAL_GPIO_PIN_1
-
-/** Primary aliases for ETH1_MDIO pin */
-#define PE12_PORT                             HAL_GPIOE
-#define PE12_PIN                              HAL_GPIO_PIN_12
-
-/** Primary aliases for ETH1_CLK pin */
-#define PA10_PORT                             HAL_GPIOA
-#define PA10_PIN                              HAL_GPIO_PIN_10
-
-/** Primary aliases for ETH1_MDC pin */
-#define PC1_PORT                              HAL_GPIOC
-#define PC1_PIN                               HAL_GPIO_PIN_1
+/** Primary aliases for ETH1_RMII_RXD1 pin */
+#define PC5_PORT                              HAL_GPIOC
+#define PC5_PIN                               HAL_GPIO_PIN_5
 
 /** Primary aliases for ETH1_RMII_REF_CLK pin */
 #define PA1_PORT                              HAL_GPIOA
 #define PA1_PIN                               HAL_GPIO_PIN_1
 
-/** Primary aliases for ETH1_RMII_RXD1 pin */
-#define PC5_PORT                              HAL_GPIOC
-#define PC5_PIN                               HAL_GPIO_PIN_5
+/** Primary aliases for ETH1_MDC pin */
+#define PC1_PORT                              HAL_GPIOC
+#define PC1_PIN                               HAL_GPIO_PIN_1
+
+/** Primary aliases for ETH1_CLK pin */
+#define PA10_PORT                             HAL_GPIOA
+#define PA10_PIN                              HAL_GPIO_PIN_10
+
+/** Primary aliases for ETH1_MDIO pin */
+#define PE12_PORT                             HAL_GPIOE
+#define PE12_PIN                              HAL_GPIO_PIN_12
+
+/** Primary aliases for ETH1_RMII_CRS_DV pin */
+#define PD1_PORT                              HAL_GPIOD
+#define PD1_PIN                               HAL_GPIO_PIN_1
+
+/** Primary aliases for ETH1_RMII_RXD0 pin */
+#define PC4_PORT                              HAL_GPIOC
+#define PC4_PIN                               HAL_GPIO_PIN_4
+
+/** Primary aliases for ETH1_RMII_TXD0 pin */
+#define PG13_PORT                             HAL_GPIOG
+#define PG13_PIN                              HAL_GPIO_PIN_13
+
+/** Primary aliases for ETH1_RMII_TXD1 pin */
+#define PG12_PORT                             HAL_GPIOG
+#define PG12_PIN                              HAL_GPIO_PIN_12
+
+/** Primary aliases for ETH1_RMII_TX_EN pin */
+#define PG11_PORT                             HAL_GPIOG
+#define PG11_PIN                              HAL_GPIO_PIN_11
 
 /* Exported macros -----------------------------------------------------------*/
 /* Exported variables --------------------------------------------------------*/
