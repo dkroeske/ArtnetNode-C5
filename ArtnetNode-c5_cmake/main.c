@@ -29,16 +29,6 @@
 /* Private variables ---------------------------------------------------------*/
 /* Private functions prototype -----------------------------------------------*/
 
-//int __io_putchar(int ch)
-//{
-//	hal_uart_handle_t *p_usart2 = mx_usart2_uart_gethandle();
-//    if (p_usart2 != NULL)
-//    {
-//        HAL_UART_Transmit(p_usart2, (uint8_t *)&ch, 1, 10);
-//    }
-//    return ch;
-//}
-
 /**
   * brief:  The application entry point.
   * retval: none but we specify int to comply with C99 standard
@@ -56,23 +46,13 @@ int main(void)
   }
   else
   {
-    /*
-      * You can start your application code here
-      *
-      */
 
-	  /* Uart test */
-//	  hal_uart_handle_t *p_usart2 = mx_usart2_uart_gethandle();
-//	  uint8_t test_msg[] = "UART test geslaagd!\r\n";
-//	  HAL_UART_Transmit(p_usart2, test_msg, sizeof(test_msg) - 1, 100);
-
+	  /* Init all tasks */
 	  app_init();
 
-	  //printf("[INFO] Starting FreeRTOS scheduler\n");
-
+	  /* Start all tasks en let's rock & roll */
 	  vTaskStartScheduler();
 
-//    while (1) {}
   }
 } /* end main */
 

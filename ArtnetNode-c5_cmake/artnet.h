@@ -6,7 +6,7 @@
 #include "app.h"
 
 #define ARTNET_DISCOVERY_PORT 6454
-#define ARTNET_MAX_UNIVERSES	8
+#define ARTNET_MAX_UNIVERSES	2
 
 #define ARTNET_OPCODE_POLL		0x2000
 #define ARTNET_OPCODE_POLLREPLY	0x2100
@@ -18,12 +18,12 @@
 int artnet_init( void(*cb)(void *) );
 int artnet_deinit();
 
-struct ArtNetStatus {
-	bool dirty;
-	uint64_t	last_update;
-};
-
-struct ArtNetStatus artnet_status(void);
+//struct ArtNetStatus {
+//	bool dirty;
+//	uint64_t	last_update;
+//};
+//
+//struct ArtNetStatus artnet_status(void);
 
 
 //struct ArtPoll {

@@ -1,4 +1,5 @@
 #include "artnet.h"
+#include "ws2812.h"
 #include "app_config.h"
 
 #include <inttypes.h>
@@ -99,8 +100,7 @@ void artnet_handle_dmx(uint8_t *payload, uint16_t len)
 {
 	if(len<18) return;
 
-	// Get and covert payload data to ArtDmx
-
+	// Get and convert payload data to ArtDmx
 	ArtNetDMX_t dmx = {};
 	memset( (uint8_t *)&dmx, 0, sizeof(ArtNetDMX_t));
 
@@ -113,31 +113,53 @@ void artnet_handle_dmx(uint8_t *payload, uint16_t len)
 	int universe = ARTNET_UNIVERSE;
 	if( (dmx.SubUni >= universe) && (dmx.SubUni < (universe + ARTNET_MAX_UNIVERSES)) ) {
 
-	// If so play leds every time sequence changes. Save multiple 512 DMX-
-	// frames
-	if( p_sequence != dmx.Sequence ) {
-		// For all leds map led-number to 512 dmx buffers
-		unsigned int nr_leds = NR_LEDS;
-		for(uint16_t idx = 0; idx < nr_leds*3; idx+=3) {
-			uint8_t r,g,b;
-			r = artdmx[idx/512].Data[idx%512];
-			g = artdmx[(idx+1)/512].Data[(idx+1)%512];
-			b = artdmx[(idx+2)/512].Data[(idx+2)%512];
-			//pixel(r,g,b);
-		}
-//					for(uint8_t idx = 0; idx < artdmx_index+1; idx++) {
-//						printf("SubUni %.2d: Sequence: %.2d\n", artdmx[idx].SubUni, artdmx[idx].Sequence);
-//					}
-			artdmx_index = 0;
-			artdmx[artdmx_index] = dmx;
-		} else {
-			if(artdmx_index < ARTNET_MAX_UNIVERSES) {
-				artdmx_index++ ;
-				artdmx[artdmx_index] = dmx;
-			}
-		}
-		p_sequence = dmx.Sequence;
+		uint16_t dmx_len = (payload[16] << 8) | payload[17];
+	    if (dmx_len > DMX_BLOCK_SIZE) dmx_len = DMX_BLOCK_SIZE;
+	    if (len < (18 + dmx_len)) return;
+
+	    uint8_t *pBuf = NULL;
+
+	    // probeer een lege buffer te pakken
+	    if (xQueueReceive(xEmptyQueue, &pBuf, 0) != pdPASS) {
+	        // Geen lege buffer? Pak dan het nog niet verzonden frame uit xFullQueue (altijd nieuwste frame)
+	        xQueueReceive(xFullQueue, &pBuf, 0);
+	    }
+
+	    if (pBuf != NULL) {
+	        // Kopieer de 512 DMX bytes direct uit de payload
+	        memset(pBuf, 0, DMX_BLOCK_SIZE);
+	        memcpy(pBuf, &payload[18], dmx_len);
+
+	        // Stuur pointer naar ws2812Thread (dit wekt de task direct in het ritme van de zender)
+	        xQueueSend(xFullQueue, &pBuf, 0);
+	    }
 	}
+
+//	// If so play leds every time sequence changes. Save multiple 512 DMX-
+//	// frames
+//	if( p_sequence != dmx.Sequence ) {
+//		// For all leds map led-number to 512 dmx buffers
+//		unsigned int nr_leds = NR_LEDS;
+//		for(uint16_t idx = 0; idx < nr_leds*3; idx+=3) {
+//			uint8_t r,g,b;
+//			r = artdmx[idx/512].Data[idx%512];
+//			g = artdmx[(idx+1)/512].Data[(idx+1)%512];
+//			b = artdmx[(idx+2)/512].Data[(idx+2)%512];
+//			//pixel(r,g,b);
+//		}
+////					for(uint8_t idx = 0; idx < artdmx_index+1; idx++) {
+////						printf("SubUni %.2d: Sequence: %.2d\n", artdmx[idx].SubUni, artdmx[idx].Sequence);
+////					}
+//			artdmx_index = 0;
+//			artdmx[artdmx_index] = dmx;
+//		} else {
+//			if(artdmx_index < ARTNET_MAX_UNIVERSES) {
+//				artdmx_index++ ;
+//				artdmx[artdmx_index] = dmx;
+//			}
+//		}
+//		p_sequence = dmx.Sequence;
+//	}
 
 
 	// Update time

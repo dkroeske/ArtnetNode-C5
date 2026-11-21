@@ -22,6 +22,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
   app_logger.c
   app_lwip.c
   artnet.c
+  ws2812.c
 )
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC

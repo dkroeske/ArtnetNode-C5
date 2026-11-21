@@ -65,12 +65,13 @@ extern "C" {
 
 /* SNTP server address */
 #ifndef APP_SNTP_SERVER_ADDR
-#define APP_SNTP_SERVER_ADDR                       "pool.ntp.org"
+#define APP_SNTP_SERVER_ADDR                 		"pool.ntp.org"
 #endif /*APP_SNTP_SERVER_ADDR*/
 
 /* Threads priorities*/
-#define APP_LWIP_START_THREAD_PRIO                 24
+#define APP_LWIP_START_THREAD_PRIO                 	24
 #define ARTNET_CLIENT_THREAD_PRIO                	24
+#define WS2812_THREAD_PRIO							24
 
 #ifdef __cplusplus
 }

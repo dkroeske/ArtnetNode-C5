@@ -20,6 +20,7 @@
 #include "app_logger.h"
 #include "app_lwip.h"
 #include "artnet.h"
+#include "ws2812.h"
 //#include "app_sntp_client.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -50,6 +51,12 @@ app_status_t app_init(void)
     */
   artnet_init( NULL );
   APP_LOG_INFO(APP_NAME, "ArtNet initialized.");
+
+  /**
+    * Starts the ArtNet client thread
+    */
+  ws2812_init();
+  APP_LOG_INFO(APP_NAME, "ws2812 initialized.");
 
   return return_status;
 }
